@@ -1,0 +1,13 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'meridian-onboarding'
+
+include 'web'
+include 'onboarding-api'
+include 'core-mock'
+include 'provider-mock'

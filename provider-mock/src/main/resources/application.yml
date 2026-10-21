@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: provider-mock
+
+server:
+  port: 8083
+  error:
+    include-message: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+app:
+  api-key: ${PROVIDER_API_KEY:dev-provider-key-meridian-2026}
+  watchlist:
+    names:
+      - name: "IVAN NORVIK"
+        hits:
+          - source: "UN Consolidated Sanctions List"
+            confidence: 0.94
+          - source: "Global PEP Register"
+            confidence: 0.81
+      - name: "NADIA AL-RASHID"
+        hits:
+          - source: "Interpol Red Notice Index"
+            confidence: 0.88
+      - name: "MARCUS VELDT"
+        hits:
+          - source: "Regional PEP Database"
+            confidence: 0.61

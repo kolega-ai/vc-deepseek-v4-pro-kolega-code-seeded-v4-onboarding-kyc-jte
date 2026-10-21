@@ -1,0 +1,34 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'gg.jte.gradle' version "${jteVersion}"
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation "gg.jte:jte:${jteVersion}"
+    implementation "gg.jte:jte-spring-boot-starter-3:${jteVersion}"
+    implementation 'org.apache.commons:commons-csv:1.13.0'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+bootJar {
+    archiveFileName = 'web.jar'
+}
+
+// Wire the JTE plugin's generated template sources into the main source set so the
+// precompiled template classes land on the classpath.
+sourceSets {
+    main {
+        java {
+            srcDir 'build/generated-sources/jte'
+        }
+    }
+}
+
+tasks.named('compileJava') {
+    dependsOn tasks.named('generateJte')
+}

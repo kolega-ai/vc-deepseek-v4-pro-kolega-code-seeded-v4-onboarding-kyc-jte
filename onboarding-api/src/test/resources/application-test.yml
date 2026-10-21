@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  jackson:
+    default-property-inclusion: non_null
+
+app:
+  web-url: http://localhost:8080
+  jwt:
+    secret: test-secret-0123456789abcdef0123456789abcdef
+    issuer: meridian-onboarding-api
+    audience: meridian-channel
+    ttl: PT12H
+  auth:
+    otp-ttl: PT10M
+    otp-issue-window: PT1H
+    otp-max-issues-per-window: 5
+    otp-max-verify-attempts: 5
+    step-up-ttl: PT5M
+    reset-token-ttl: PT30M
+    max-failed-logins: 5
+    login-lock-minutes: 15
+  storage:
+    dir: ${java.io.tmpdir}/meridian-test-storage
+  providers:
+    base-url: http://localhost:8083
+    api-key: test-provider-key
+  core-mock:
+    base-url: http://localhost:8082
+    api-key: test-core-key
+    token-secret: test-core-token-secret-0123456789abcdef-32b
+  screening:
+    job-enabled: false
+    queue-delay: PT30S
+  jobs:
+    document-expiry-cron: "0 0 2 * * *"
+    abandonment-cron: "0 30 2 * * *"
+    rekyc-due-cron: "0 15 2 * * *"
+    housekeeping-cron: "0 0 3 * * *"
+  seed:
+    enabled: false
+    screening-delay-for-seeded-submitted: PT2H
+  scheduling:
+    enabled: false
+  webhook:
+    delivery-timeout-ms: 4000

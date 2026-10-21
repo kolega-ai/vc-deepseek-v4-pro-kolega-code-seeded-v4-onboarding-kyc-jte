@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<register>
+  <holder>
+    <policyNo>PL-2026-000101</policyNo>
+    <name>Meridian Life Assurance</name>
+    <tier>tier_2</tier>
+  </holder>
+  <holder>
+    <policyNo>PL-2026-000102</policyNo>
+    <name>Straits Wealth Partners</name>
+    <tier>tier_3</tier>
+  </holder>
+  <holder>
+    <policyNo>PL-2026-000103</policyNo>
+    <name>Harbour Income Plan</name>
+    <tier>tier_1</tier>
+  </holder>
+</register>
